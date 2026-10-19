@@ -43,21 +43,19 @@ The current dashboard reports the following figures for the workbook's current d
 | Cancellation rate | 14.28% | Distinct cancelled Order IDs divided by distinct Order IDs |
 | Average order value | ₹631.63 | Total revenue divided by distinct Order IDs |
 
-These metrics depend on the workbook's data and active slicer selections. The cancellation rate is an order-level measure; it should not be confused with the share of cancellations attributable to each fulfillment method.
-
 ## Findings
 
 ### Revenue is concentrated in a few categories
 **Set** is the leading revenue category, followed by **Kurta**. This concentration is useful for prioritizing further investigation into product mix, availability, and campaign performance.
 
 ### Revenue varies across the observed months
-The monthly PivotTable shows March as a partial month in the dataset, followed by higher recorded revenue in April, May, and June. March should not be compared with the full months as though each covered the same number of days.
+The monthly PivotTable shows March as a partial month in the dataset, followed by higher recorded revenue in April, May, and June.
 
 ### A small group of states contributes substantial revenue
 **Maharashtra** and **Karnataka** are among the leading states by recorded revenue. This pattern can inform further regional analysis, but the dashboard alone does not establish why these states perform strongly.
 
 ### Fulfillment and cancellations can be examined together
-The cancellation pie chart shows the distribution of cancelled orders between Amazon and Merchant fulfillment. It describes each method's share of cancellations—not each method's cancellation rate—and does not establish that fulfillment method caused cancellations.
+The cancellation pie chart shows the distribution of cancelled orders between Amazon and Merchant fulfillment. It describes each method's share of cancellations—not each method's cancellation rate.
 
 ### Product-level views support inventory questions
 The workbook includes category, SKU, and size views. These can help identify where sales and quantities are concentrated and guide follow-up analysis of inventory allocation.
@@ -65,12 +63,11 @@ The workbook includes category, SKU, and size views. These can help identify whe
 ## Recommendations
 
 1. **Review category concentration.** Investigate demand, margins, stock availability, and promotional activity for leading categories before making inventory or marketing changes.
-2. **Compare like-for-like periods.** Account for the partial March period when interpreting monthly trends.
-3. **Investigate regional performance.** Examine order counts, product mix, and fulfillment patterns in leading states before allocating additional budget.
-4. **Monitor cancellation patterns.** Separate cancellation counts, cancellation shares, and cancellation rates so each metric answers a clearly defined question.
-5. **Use size and SKU views for follow-up analysis.** Combine quantity and revenue with stock and margin data if available before making replenishment decisions.
+2. **Investigate regional performance.** Examine order counts, product mix, and fulfillment patterns in leading states before allocating additional budget.
+3. **Monitor cancellation patterns.** Separate cancellation counts, cancellation shares, and cancellation rates so each metric answers a clearly defined question.
+4. **Use size and SKU views for follow-up analysis.** Combine quantity and revenue with stock and margin data if available before making replenishment decisions.
 
-## Workbook and Data
+## Data
 
 The repository contains:
 - `Amazon Sale Report.csv` — source CSV dataset.
@@ -83,15 +80,6 @@ The repository contains:
 - Repeated Order IDs can represent multiple product lines; they are not automatically duplicate records.
 - Interpret results in light of the dataset's coverage and the workbook's active filters. Findings are descriptive and should not be treated as proof of causation.
 
-## Tools & Skills Demonstrated
-
-- Microsoft Excel
-- Data validation and formula checks
-- PivotTables and PivotCharts
-- Interactive slicers
-- KPI definition and calculation
-- Exploratory business analysis
-- Communicating findings and limitations
 
 ## Repository Structure
 
