@@ -1,177 +1,114 @@
-# 📦 Amazon Operations & Sales Analytics Dashboard (Excel)
+# Amazon Operations & Sales Analytics Dashboard
 
-A small number of product categories generated the majority of revenue, while operational factors such as fulfillment method and order cancellations had a measurable impact on overall business performance.
+An Excel-based analysis of Amazon sales, product performance, order status, and fulfillment data. The project uses PivotTables, PivotCharts, slicers, and KPI calculations to turn transaction-level records into a practical business overview.
 
-This project was built to answer a simple business question:
-
-> **How can an Amazon seller increase revenue while reducing operational inefficiencies?**
-
----
+> **Business objective:** Understand where revenue is concentrated, how sales change over time, and what the order and fulfillment data can tell us about operational performance.
 
 ## Dashboard Preview
 
-### Executive Dashboard
+![Amazon sales and operations dashboard](screenshots/dashboard_overview.png)
 
-![Dashboard Overview](screenshots/dashboard_overview.png)
+Additional views:
+- [Revenue by category](screenshots/revenue_category_analysis.png)
+- [Cancelled orders by fulfillment](screenshots/cancellation_analysis.png)
+- [Revenue by state](screenshots/top_states_analysis.png)
 
----
+## Project at a Glance
 
-## Project Overview
+| Item | Details |
+|---|---|
+| Tool | Microsoft Excel |
+| Analysis | Sales revenue, product categories, geography, order status, fulfillment |
+| Techniques | Data checks, PivotTables, PivotCharts, slicers, KPI calculations |
+| Currency | Indian rupees (INR) |
+| Main deliverable | Interactive Excel dashboard |
 
-I've analyzed Amazon sales and fulfillment data using Microsoft Excel to uncover revenue, operationas, and growth opportunities.
+## Business Questions
 
-Rather than focusing only on visualization, the goal was to approach the dataset like a business analyst:
+- Which product categories contribute the most revenue?
+- How does recorded revenue vary across the months represented in the dataset?
+- Which shipping states contribute the most revenue?
+- Which sizes and SKUs account for the most recorded sales or quantity?
+- How many unique orders are represented, and what share have a cancelled status?
+- How are cancelled orders distributed between Amazon and Merchant fulfillment?
 
-* Identify what drives revenue
-* Understand cancellation behavior
-* Evaluate fulfillment performance
-* Analyze geographic sales distribution
-* Generate actionable recommendations
+## Key Metrics
 
----
+The current dashboard reports the following figures for the workbook's current data and filter state:
 
-## Business Questions Solved
+| KPI | Value | Definition |
+|---|---:|---|
+| Total revenue | ₹76,034,406 | Sum of quantity multiplied by amount |
+| Total orders | 120,378 | Distinct, nonblank Order IDs |
+| Cancellation rate | 14.28% | Distinct cancelled Order IDs divided by distinct Order IDs |
+| Average order value | ₹631.63 | Total revenue divided by distinct Order IDs |
 
-### Revenue Performance
+These metrics depend on the workbook's data and active slicer selections. The cancellation rate is an order-level measure; it should not be confused with the share of cancellations attributable to each fulfillment method.
 
-* Which categories generate the most revenue?
-* How does revenue trend over time?
-* Which products contribute the most sales?
+## Findings
 
-### Operational Performance
+### Revenue is concentrated in a few categories
+**Set** is the leading revenue category, followed by **Kurta**. This concentration is useful for prioritizing further investigation into product mix, availability, and campaign performance.
 
-* What percentage of orders are cancelled?
-* Does fulfillment method impact operational outcomes?
+### Revenue varies across the observed months
+The monthly PivotTable shows March as a partial month in the dataset, followed by higher recorded revenue in April, May, and June. March should not be compared with the full months as though each covered the same number of days.
 
-### Geographic Analysis
+### A small group of states contributes substantial revenue
+**Maharashtra** and **Karnataka** are among the leading states by recorded revenue. This pattern can inform further regional analysis, but the dashboard alone does not establish why these states perform strongly.
 
-* Which states generate the highest revenue?
-* Where should growth efforts be focused?
+### Fulfillment and cancellations can be examined together
+The cancellation pie chart shows the distribution of cancelled orders between Amazon and Merchant fulfillment. It describes each method's share of cancellations—not each method's cancellation rate—and does not establish that fulfillment method caused cancellations.
 
-### Product Analysis
-
-* Which categories dominate sales?
-* Which sizes perform best?
-* Which SKUs contribute most revenue?
-
----
-
-## Dataset
-
-The dataset contains Amazon order-level sales records, including:
-
-* Order ID
-* Order Date
-* Fulfillment Method
-* Product Category
-* SKU
-* Size
-* Quantity
-* Revenue (INR)
-* Shipping State
-* Order Status
-* B2B Indicator
-
----
-
-### Data Preparation
-
-* Data Cleaning
-* Duplicate Removal
-* Filtering & Validation
-
-### Analysis
-
-* Pivot Tables
-* Pivot Charts
-* Slicers
-* KPI Development
-* Conditional Analysis
-
----
-
-## Key Findings
-
-### 📈 Revenue Concentration
-
-The **Set** and **Kurta** categories generated the largest share of revenue, indicating strong product-market fit and inventory priorities.
-
----
-
-### 🚚 Fulfillment Performance
-
-Cancellation analysis revealed meaningful differences between fulfillment methods.
-
-This insight can help operations teams evaluate logistics performance and reduce revenue leakage from cancelled orders.
-
----
-
-### 🌎 Geographic Performance
-
-Revenue is heavily concentrated in a small number of states.
-
-States such as **Maharashtra** and **Karnataka** consistently contributed the highest sales activity.
-
-This information can support:
-
-* Regional inventory planning
-* Marketing allocation
-* Expansion strategy
-
----
-
-### 📦 Product Strategy
-
-Sales volume is concentrated among a relatively small set of SKUs and product categories.
-
-Understanding these patterns helps businesses:
-
-* Optimize inventory
-* Reduce stock inefficiencies
-* Improve forecasting accuracy
-
----
+### Product-level views support inventory questions
+The workbook includes category, SKU, and size views. These can help identify where sales and quantities are concentrated and guide follow-up analysis of inventory allocation.
 
 ## Recommendations
 
-### 1. Focus on High-Revenue Categories
+1. **Review category concentration.** Investigate demand, margins, stock availability, and promotional activity for leading categories before making inventory or marketing changes.
+2. **Compare like-for-like periods.** Account for the partial March period when interpreting monthly trends.
+3. **Investigate regional performance.** Examine order counts, product mix, and fulfillment patterns in leading states before allocating additional budget.
+4. **Monitor cancellation patterns.** Separate cancellation counts, cancellation shares, and cancellation rates so each metric answers a clearly defined question.
+5. **Use size and SKU views for follow-up analysis.** Combine quantity and revenue with stock and margin data if available before making replenishment decisions.
 
-Allocate more inventory and marketing resources toward top-performing categories such as Set and Kurta.
+## Workbook and Data
 
-### 2. Investigate Cancellation Drivers
+The repository contains:
+- `Amazon Sale Report.csv` — source CSV dataset.
+- `Amazon_Analytics_Dashboard.xlsx.xlsx` — Excel workbook containing the data sheet, PivotTables/charts, dashboard, and KPI helper sheet.
+- `screenshots/` — dashboard and analysis screenshots.
 
-Analyze operational causes behind cancelled orders and fulfillment-related performance gaps.
+### Method notes
+- The dashboard's revenue KPI is calculated from quantity multiplied by amount; summing the raw Amount field alone gives a different total because some rows have a quantity of zero.
+- Total orders are counted using distinct Order IDs rather than counting every product-level row.
+- Repeated Order IDs can represent multiple product lines; they are not automatically duplicate records.
+- Interpret results in light of the dataset's coverage and the workbook's active filters. Findings are descriptive and should not be treated as proof of causation.
 
-### 3. Prioritize High-Performing Regions
+## Tools & Skills Demonstrated
 
-Use geographic sales concentration to guide future growth initiatives.
+- Microsoft Excel
+- Data validation and formula checks
+- PivotTables and PivotCharts
+- Interactive slicers
+- KPI definition and calculation
+- Exploratory business analysis
+- Communicating findings and limitations
 
-### 4. Improve Inventory Planning
-
-Leverage size and category demand patterns to optimize stock allocation.
-
----
-
-## Project Structure
+## Repository Structure
 
 ```text
 Amazon_Analytics_Dashboard/
-│
-├── Amazon Sales Performance & Fulfillment Analysis.xlsx
-├── Raw_Amazon_Data.xlsx
-├── README.md
-│
+├── Amazon Sale Report.csv
+├── Amazon_Analytics_Dashboard.xlsx.xlsx
+├── readme.md
 └── screenshots/
+    ├── cancellation_analysis.png
     ├── dashboard_overview.png
     ├── revenue_category_analysis.png
-    ├── cancellation_analysis.png
     └── top_states_analysis.png
 ```
 
----
+## Author
 
-## 👤 Author
-
-**Atik Riad**
-📧 [azrofficial20@gmail.com](mailto:azrofficial20@gmail.com)
-🔗 [LinkedIn](https://www.linkedin.com/in/atikzamanriad/)
+**Atik Riad**  
+Email: [azrofficial20@gmail.com](mailto:azrofficial20@gmail.com)  
+LinkedIn: [Atik Zaman Riad](https://www.linkedin.com/in/atikzamanriad/)
